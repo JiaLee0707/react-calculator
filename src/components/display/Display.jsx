@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import * as S from './Display.style';
+import { Wrap, Input } from './Display.style';
+
+import { CalculatorContext } from '../calculator/Calculator';
 
 const Display = () => {
-	return <S.Wrap></S.Wrap>;
+	const { result } = useContext(CalculatorContext);
+
+	return (
+		<Wrap>
+			<Input type="number" value={result} />
+		</Wrap>
+	);
 };
 
 export default Display;

@@ -10,6 +10,7 @@ const global = createGlobalStyle`
   
   body {
     font-size: 1.6rem;
+    font-family: AppleSDGothicNeoM;
   }
 
   button {

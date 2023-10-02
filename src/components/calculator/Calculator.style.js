@@ -8,8 +8,21 @@ export const Container = styled.div`
 export const CalculatorWrap = styled.div`
 	min-width: 15rem;
 	aspect-ratio: 3 / 4;
-	background-color: #595351ff;
-	opacity: 0.95;
+	background-color: rgba(89, 83, 81, 0.95);
+	//opacity: 0.95;
 	border-radius: 1rem;
+	overflow: hidden;
 	${({ theme }) => theme.common.wh('35%', 'auto')};
+`;
+
+export const Buttons = styled.div`
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas:
+		'conversion conversion conversion operation'
+		'digits digits digits operation'
+		'digits digits digits operation'
+		'digits digits digits operation'
+		'digits digits digits operation';
+	${({ theme }) => theme.common.wh('100%', '75%')};
 `;

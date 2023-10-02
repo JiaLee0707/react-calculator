@@ -1,69 +1,13 @@
 @font-face {
-	font-family: 'AcuminPro-Bold';
+	font-family: 'AppleGothic';
 	src:
-		local('AcuminPro-Bold'),
-		url('../assets/fonts/AcuminPro-Bold.ttf') format('truetype');
+		local('AppleGothic'),
+		url('../assets/fonts/AppleGothic.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: 'Helvetica-Regular';
+	font-family: 'AppleSDGothicNeoM';
 	src:
-		local('Helvetica-Regular'),
-		url('../assets/fonts/Helvetica-Regular.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'Helvetica-Bold';
-	src:
-		local('Helvetica-Bold'),
-		url('../assets/fonts/Helvetica-Bold.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'HelveticaNeue-Bold';
-	src:
-		local('HelveticaNeue-Bold'),
-		url('../assets/fonts/HelveticaNeue-Bold.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'HelveticaNeue-Regular';
-	src:
-		local('HelveticaNeue-Regular'),
-		url('../assets/fonts/HelveticaNeue-Regular.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'HelveticaNeue-Light';
-	src:
-		local('HelveticaNeue-Light'),
-		url('../assets/fonts/HelveticaNeue-Light.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'HelveticaNeue-Medium';
-	src:
-		local('HelveticaNeue-Medium'),
-		url('../assets/fonts/HelveticaNeue-Medium.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'ByulbitchaR';
-	src:
-		local('ByulbitchaR'),
-		url('../assets/fonts/BMEULJIROTTF.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'AppleLiGothicMedium';
-	src:
-		local('AppleLiGothicMedium'),
-		url('../assets/fonts/AppleLiGothic-Medium.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'Arial-Regular';
-	src:
-		local('Arial-Regular'),
-		url('../assets/fonts/Arial-Regular.ttf') format('truetype');
+		local('AppleSDGothicNeo'),
+		url('../assets/fonts/AppleSDGothicNeoM.ttf') format('truetype');
 }
