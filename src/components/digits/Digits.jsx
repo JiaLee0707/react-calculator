@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Button from '../common/button/Button';
 
 import { Wrap, DigitsButton } from './Digits.style';
 
-// import { CalculatorContext } from '../calculator/Calculator';
+import { CalculatorContext } from '../calculator/Calculator';
 
 const DIGITS = [
 	'0',
@@ -13,12 +13,16 @@ const DIGITS = [
 ].reverse();
 
 const Digits = () => {
-	// const { setResult } = useContext(CalculatorContext);
+	const { setDisplay } = useContext(CalculatorContext);
 
 	return (
 		<Wrap>
 			{DIGITS.map((digits, index) => (
-				<Button key={index} $custom={DigitsButton} isZero={digits === '0'}>
+				<Button
+					key={index}
+					$custom={DigitsButton}
+					$isZero={digits === '0'}
+					onClick={() => setDisplay(digits)}>
 					{digits}
 				</Button>
 			))}

@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { createContext } from 'react';
 
 import * as S from './Calculator.style';
 
 import Display from '../display/Display';
 import Conversion from '../conversion/Conversion';
 import Digits from '../digits/Digits';
-import Operation from '../operations/Operation';
+import Operators from '../operators/Operators';
 
 import useCalculate from '../../hooks/useCalculate';
 
-export const CalculatorContext = React.createContext(null);
+export const CalculatorContext = createContext(null);
 
 const Calculator = () => {
-	const { result, setResult } = useCalculate();
+	const calculate = useCalculate();
 
 	return (
-		<CalculatorContext.Provider value={{ result, setResult }}>
+		<CalculatorContext.Provider value={calculate}>
 			<S.Container>
 				<S.CalculatorWrap>
 					<Display />
 					<S.Buttons>
 						<Conversion />
 						<Digits />
-						<Operation />
+						<Operators />
 					</S.Buttons>
 				</S.CalculatorWrap>
 			</S.Container>

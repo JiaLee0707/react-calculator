@@ -12,7 +12,7 @@ export const CalculatorWrap = styled.div`
 	//opacity: 0.95;
 	border-radius: 1rem;
 	overflow: hidden;
-	${({ theme }) => theme.common.wh('35%', 'auto')};
+	${({ theme }) => theme.common.wh('25%', 'auto')};
 `;
 
 export const Buttons = styled.div`

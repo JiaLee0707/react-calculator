@@ -5,11 +5,11 @@ import { Wrap, Input } from './Display.style';
 import { CalculatorContext } from '../calculator/Calculator';
 
 const Display = () => {
-	const { result } = useContext(CalculatorContext);
+	const { display, prevNumber } = useContext(CalculatorContext);
 
 	return (
 		<Wrap>
-			<Input type="number" value={result} />
+			<Input value={display || prevNumber} onChange={() => {}} />
 		</Wrap>
 	);
 };

@@ -10,4 +10,6 @@ export const Wrap = styled.div`
 export const OperationsButton = css`
 	flex: 1 0 0;
 	background-color: rgb(242, 163, 60);
+
+	${({ $isOperator }) => $isOperator && 'border: 1px solid rgb(87, 81, 80)'};
 `;

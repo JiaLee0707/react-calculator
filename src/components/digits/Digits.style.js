@@ -12,5 +12,5 @@ export const DigitsButton = css`
 	flex: 1 0 30%;
 	background-color: rgb(130, 126, 124);
 
-	${({ isZero }) => isZero && 'flex: 2 0 60%'};
+	${({ $isZero }) => $isZero && 'flex: 2 0 60%'};
 `;
