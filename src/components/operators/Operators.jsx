@@ -8,7 +8,7 @@ import { OPERATORS } from '../../constants/Operators';
 import { CalculatorContext } from '../calculator/Calculator';
 
 const Operators = () => {
-	const { operator: isOperator, setOperator } = useContext(CalculatorContext);
+	const { getLastOperator, setOperator } = useContext(CalculatorContext);
 
 	return (
 		<Wrap>
@@ -17,7 +17,7 @@ const Operators = () => {
 					key={index}
 					title={OPERATORS[operator]}
 					$custom={OperationsButton}
-					$isOperator={isOperator === operator}
+					$isOperator={getLastOperator() === operator}
 					onClick={() => setOperator(operator)}>
 					{operator}
 				</Button>

@@ -4,12 +4,19 @@ import { Wrap, Input } from './Display.style';
 
 import { CalculatorContext } from '../calculator/Calculator';
 
+import formatNumberWithCommas from '../../utils/formatNumberWithCommas';
+
 const Display = () => {
-	const { display, prevNumber } = useContext(CalculatorContext);
+	const { display, getLastDigits } = useContext(CalculatorContext);
 
 	return (
 		<Wrap>
-			<Input value={display || prevNumber} onChange={() => {}} />
+			<Input
+				value={
+					formatNumberWithCommas(display) || formatNumberWithCommas(getLastDigits())
+				}
+				onChange={() => {}}
+			/>
 		</Wrap>
 	);
 };

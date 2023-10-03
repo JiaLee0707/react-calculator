@@ -1,2 +1,2 @@
 export { default as GlobalStyles } from './global';
-export { getTheme as theme } from './theme';
+export { default as getTheme } from './theme';

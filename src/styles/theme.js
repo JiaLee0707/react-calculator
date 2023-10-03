@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-export const getTheme = (isDarkMode = false) => {
+export const getTheme = (isApple = false) => {
 	const size = {
 		small: '576px',
 		mobile: '768px',
@@ -14,7 +14,14 @@ export const getTheme = (isDarkMode = false) => {
 		desktop: `@media only screen and (min-width: ${size.desktop})`,
 	};
 
-	const lightColorData = {
+	const hanghaeplusColorData = {
+		background: '#fff',
+		mainColor: 'rgb(225, 49, 33)',
+		title: 'rgb(55, 53, 48)',
+		strawberry: 'rgb(250, 236, 236)',
+	};
+
+	const appleColorData = {
 		background: '#fff',
 		mainColor: '#72acff',
 		subTitle: '#707070',
@@ -40,33 +47,7 @@ export const getTheme = (isDarkMode = false) => {
 		saveDefault: '#fdfdfd',
 	};
 
-	const darkColorData = {
-		background: '#2e2e2e',
-		mainColor: '#72acff',
-		subTitle: '#707070',
-		placeholder: '#e0e0e0',
-		placeholder2: '#bbbbbb',
-		border: '#e2e2e2',
-		border2: '#dcdcdc',
-		darkGray: '#929292',
-		gray: '#f0f0f0',
-		lemon: '#fff2c4',
-		melon: '#abde65',
-		green: 'green',
-		orange: '#fd9c06',
-		sky: 'd8e6ff',
-		blue: '#9fc0f8',
-		pink: '#ffe0d8',
-		tomato: 'f8b79f',
-		activation: '#5e9bf5',
-		title: '#46423e',
-		bold: '#46423d',
-		regular: '#dcdcdc',
-		modal: '#33333355',
-		saveDefault: '#fdfdfd',
-	};
-
-	const colorData = isDarkMode ? darkColorData : lightColorData;
+	const colorData = isApple ? appleColorData : hanghaeplusColorData;
 
 	const color = new Proxy(colorData, {
 		get: (target, prop) => {
@@ -78,7 +59,7 @@ export const getTheme = (isDarkMode = false) => {
 			const getColor = (shortHex) => {
 				if (shortHex.length !== 2 && shortHex.length !== 1) return null;
 
-				if (isDarkMode) {
+				if (isApple) {
 					const inverted = invertHex(shortHex);
 					return `#${inverted}${inverted}${inverted}`;
 				}
@@ -131,4 +112,4 @@ export const getTheme = (isDarkMode = false) => {
 	};
 };
 
-export default getTheme();
+export default getTheme;

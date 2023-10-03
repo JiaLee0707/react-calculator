@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { calculate } from '../utils/calculate';
-import { conversion } from '../utils/conversion';
+import calculate from '../utils/calculate';
+import conversion from '../utils/conversion';
 
 const useCalculate = () => {
-	const [prevNumber, setPrevNumber] = useState('0');
+	const [stack, setStack] = useState(['0']);
 	const [display, setDisplay] = useState('');
 	const [operator, setOperator] = useState('');
 	const [isAC, setIsAC] = useState(true);
@@ -16,21 +16,22 @@ const useCalculate = () => {
 	};
 
 	const _setOperator = (value) => {
+		const stackTemp = [...stack];
 		if (value === '=') {
-			const isCalculate = prevNumber && display && operator;
-			if (isCalculate) {
-				const result = calculate[operator](
-					parseFloat(prevNumber),
-					parseFloat(display),
-				);
+			if (stackTemp.length > 1) {
+				stackTemp.push(display);
+				const result = calculate(stackTemp);
 				if (!isNaN(result)) setDisplay(result);
 				else setDisplay('숫자 아님');
 				setOperator('');
+				setStack(['0']);
 			}
 		} else {
-			if (display) setPrevNumber(display);
-			setDisplay('');
-			setOperator(value);
+			if (stackTemp.length < 2) stackTemp.splice(-1);
+			stackTemp.push(display);
+			stackTemp.push(value);
+			setDisplay('0');
+			setStack(stackTemp);
 		}
 	};
 
@@ -40,8 +41,11 @@ const useCalculate = () => {
 				resetAll();
 				break;
 			case 'C':
-				if (!display && operator) setOperator('');
-				else setDisplay('0');
+				if (!display) {
+					const stackTemp = [...stack];
+					stackTemp.splice(-1);
+					setStack(stackTemp);
+				} else setDisplay('0');
 				setIsAC(true);
 				break;
 			default:
@@ -51,20 +55,30 @@ const useCalculate = () => {
 	};
 
 	const resetAll = () => {
-		setPrevNumber('0');
+		setStack(['0']);
 		setDisplay('');
 		setOperator('');
 		setIsAC(true);
 	};
 
+	const getLastDigits = () => {
+		return [...stack].reverse().find((value) => !isNaN(value));
+	};
+
+	const getLastOperator = () => {
+		return [...stack].reverse().find((value) => isNaN(value));
+	};
+
 	return {
 		isAC,
-		prevNumber,
+		stack,
 		display,
-		operator,
-		setConversion,
 		setDisplay: _setDisplay,
+		operator,
 		setOperator: _setOperator,
+		setConversion,
+		getLastDigits,
+		getLastOperator,
 	};
 };
 
