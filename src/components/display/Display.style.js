@@ -13,10 +13,10 @@ export const Input = styled.input`
 	outline: none;
 	caret-color: transparent;
 	background-color: transparent;
-	color: rgb(227, 225, 225);
 	font-size: 5rem;
 	font-weight: normal;
 	text-align: end;
+	color: ${({ theme }) => theme.color.title};
 	${({ theme }) => theme.common.wh('100%', 'auto')};
 
 	&::-webkit-outer-spin-button,

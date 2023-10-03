@@ -1,4 +1,4 @@
-const calculate = {
+export const calculate = {
 	'÷': (a, b) => a / b,
 	x: (a, b) => a * b,
 	'-': (a, b) => a - b,
@@ -55,9 +55,7 @@ const evaluateExpression = (parsedExpression) => {
 	return parseInt(stack[0]);
 };
 
-const calculateExpression = (expression) => {
+export const calculateExpression = (expression) => {
 	const parsedExpression = sortExpression(expression);
 	return evaluateExpression(parsedExpression);
 };
-
-export default calculateExpression;

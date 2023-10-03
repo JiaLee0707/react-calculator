@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+
 export const getTheme = (isApple = false) => {
 	const size = {
 		small: '576px',
@@ -15,36 +16,17 @@ export const getTheme = (isApple = false) => {
 	};
 
 	const hanghaeplusColorData = {
-		background: '#fff',
+		background: 'rgb(250, 236, 236)',
+		calculator: 'rgba(253, 249, 244, 0.95)',
 		mainColor: 'rgb(225, 49, 33)',
 		title: 'rgb(55, 53, 48)',
-		strawberry: 'rgb(250, 236, 236)',
 	};
 
 	const appleColorData = {
 		background: '#fff',
+		calculator: 'rgba(89, 83, 81, 0.95)',
 		mainColor: '#72acff',
-		subTitle: '#707070',
-		placeholder: '#e0e0e0',
-		placeholder2: '#bbbbbb',
-		border: '#e2e2e2',
-		border2: '#dcdcdc',
-		darkGray: '#929292',
-		gray: '#f0f0f0',
-		lemon: '#fff2c4',
-		melon: '#abde65',
-		green: 'green',
-		orange: '#fd9c06',
-		sky: 'd8e6ff',
-		blue: '#9fc0f8',
-		pink: '#ffe0d8',
-		tomato: 'f8b79f',
-		activation: '#5e9bf5',
-		title: '#46423e',
-		bold: '#46423d',
-		regular: '#dcdcdc',
-		modal: '#33333355',
-		saveDefault: '#fdfdfd',
+		title: 'rgb(227, 225, 225)',
 	};
 
 	const colorData = isApple ? appleColorData : hanghaeplusColorData;

@@ -8,10 +8,10 @@ export const Container = styled.div`
 export const CalculatorWrap = styled.div`
 	min-width: 15rem;
 	aspect-ratio: 3 / 4;
-	background-color: rgba(89, 83, 81, 0.95);
 	//opacity: 0.95;
 	border-radius: 1rem;
 	overflow: hidden;
+	background-color: ${({ theme }) => theme.color.calculator};
 	${({ theme }) => theme.common.wh('25%', 'auto')};
 `;
 

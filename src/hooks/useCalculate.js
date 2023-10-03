@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import calculate from '../utils/calculate';
+import { calculateExpression } from '../utils/calculate';
 import conversion from '../utils/conversion';
+// import { MESSAGE } from '../constants/Message';
 
 const useCalculate = () => {
 	const [stack, setStack] = useState(['0']);
@@ -14,20 +15,24 @@ const useCalculate = () => {
 
 		// display의 현재 값이 초기값(0) 또는 숫자가 아닐 때
 		// ''으로 초기화
-		if (isNaN(display) || display === '0') {
-			setDisplay('');
+		let displayTemp = display;
+		if (isNaN(displayTemp) || displayTemp === '0') {
+			displayTemp = '';
 		}
-		const nextState = display + value;
-		if (nextState.length <= 10) setDisplay((prevState) => prevState + value);
+		const nextState = displayTemp + value;
+		if (nextState.length <= 10) displayTemp = nextState;
+		// else alert(MESSAGE.MAX_LENGTH);
+		setDisplay(displayTemp);
 	};
 
 	const _setOperator = (value) => {
 		const stackTemp = [...stack];
 		if (value === '=') {
+			// if (display === '') alert(MESSAGE.NOT_NUMBER);
 			if (stackTemp.length > 1) {
 				// 마지막에 입력한 숫자 추가
 				stackTemp.push(display);
-				const result = calculate(stackTemp);
+				const result = calculateExpression(stackTemp);
 				if (!isNaN(result)) {
 					if (result.toString().length > 10) {
 						// 연산 결과가 10자리 숫자를 넘어갈 때
@@ -54,11 +59,10 @@ const useCalculate = () => {
 	};
 
 	const setConversion = (type) => {
-		switch (type) {
-			case 'AC': // 모두 지우기
-				resetAll();
-				break;
-			case 'C': // 마지막에 입력한 값만 지우기
+		if (type.includes('C')) {
+			if (isAC) resetAll(); // 모두 지우기
+			else {
+				// 마지막에 입력한 값만 지우기
 				if (!display) {
 					// 연산자일 때
 					const stackTemp = [...stack];
@@ -68,15 +72,12 @@ const useCalculate = () => {
 					// 슷자일 때
 					setDisplay('0');
 				}
-
 				// 한번 더 누르면 모두 지울 수 있도록
 				// 조건 변경: C -> AC
 				setIsAC(true);
-				break;
-			default:
-				if (display) setDisplay(conversion[type](parseFloat(display)));
-				// if (display) setDisplay(conversion[type](parseInt(display)));
-				break;
+			}
+		} else {
+			if (display) setDisplay(conversion[type](parseFloat(display)));
 		}
 	};
 

@@ -4,12 +4,12 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, getTheme } from './styles';
 
 import Calculator from './components/calculator/Calculator';
-import useCalculate from './hooks/useCalculate';
+import useTheme from './hooks/useTheme';
 
 export const ThemeContext = createContext(null);
 
 function App() {
-	const { theme } = useCalculate();
+	const { theme } = useTheme();
 	const currentTheme = getTheme(theme);
 
 	return (
