@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import Button from '../common/button/Button';
 
 import { Wrap, DigitsButton } from './Digits.style';
+
+import { MESSAGE } from '../../constants/Message';
 
 import { CalculatorContext } from '../calculator/Calculator';
 
@@ -13,7 +15,15 @@ const DIGITS = [
 ].reverse();
 
 const Digits = () => {
-	const { setDisplay } = useContext(CalculatorContext);
+	const { display, setDisplay } = useContext(CalculatorContext);
+
+	const onClick = useCallback(
+		(digits) => {
+			if (display.length > 9) alert(MESSAGE.MAX_LENGTH);
+			else setDisplay(digits);
+		},
+		[display],
+	);
 
 	return (
 		<Wrap>
@@ -22,7 +32,7 @@ const Digits = () => {
 					key={index}
 					$custom={DigitsButton}
 					$isZero={digits === '0'}
-					onClick={() => setDisplay(digits)}>
+					onClick={() => onClick(digits)}>
 					{digits}
 				</Button>
 			))}

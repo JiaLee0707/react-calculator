@@ -11,6 +11,7 @@ const getPrecedence = (operator) => {
 	return 0; // 괄호는 가장 높은 우선순위를 갖음 (현재 괄호는 존재하지 않음)
 };
 
+// 계산식 정렬 함수
 const sortExpression = (expression) => {
 	const output = [];
 	const operators = [];
@@ -36,6 +37,7 @@ const sortExpression = (expression) => {
 	return output;
 };
 
+// 정렬한 계산식 계산 함수
 const evaluateExpression = (parsedExpression) => {
 	const stack = [];
 
@@ -50,7 +52,7 @@ const evaluateExpression = (parsedExpression) => {
 		}
 	}
 
-	return stack[0];
+	return parseInt(stack[0]);
 };
 
 const calculateExpression = (expression) => {
